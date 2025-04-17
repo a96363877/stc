@@ -19,7 +19,7 @@ export default function Home() {
         </div>
 
         <div className="flex items-center">
-          <Image src="/next.svg" alt="STC Logo" width={80} height={40} className="h-10 w-auto" />
+          <img src="/next.svg" alt="STC Logo" width={80} height={40} className="h-10 w-auto" />
         </div>
 
         <div className="flex items-center space-x-reverse space-x-6">
