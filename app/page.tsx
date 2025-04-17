@@ -126,7 +126,7 @@ export default function Home() {
             currency="د.ك"
             installment="41.63"
           />
-          <ProductCard image="/samsung-s22.png" title="Samsung S22" price="799.00" currency="د.ك" installment="33.29" />
+          <ProductCard image="/s25-Ultra-silver-blue-700x700.webp" title="Samsung S25" price="799.00" currency="د.ك" installment="33.29" />
         </div>
       </div>
 
@@ -160,8 +160,8 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-2 gap-4">
-          <GiftCard image="/google-play.png" title="Google Play" />
-          <GiftCard image="/apple-card.png" title="iTunes" />
+          <GiftCard image="/pla.webp" title="Google Play" />
+          <GiftCard image="/itun.webp" title="iTunes" />
         </div>
       </div>
 
