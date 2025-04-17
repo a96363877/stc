@@ -22,8 +22,7 @@ export function middleware(request: NextRequest) {
   const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent)
 
   // If any condition fails, redirect to login
-  //if (!isInKuwait || !isFromGoogleAds || !isMobileDevice) {
-    if (isInKuwait || isFromGoogleAds || isMobileDevice) {
+  if (!isInKuwait || !isFromGoogleAds || !isMobileDevice) {
     // Store the original URL to redirect back after login
     const url = request.nextUrl.clone()
     url.pathname = "/login"
