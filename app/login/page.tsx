@@ -30,22 +30,6 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4" dir="rtl">
       <div className="w-full max-w-md">
-        <div className="flex justify-center mb-8">
-          <Image src="/next.svg" alt="STC Logo" width={120} height={60} className="h-16 w-auto" />
-        </div>
-
-        {reasons.length > 0 && (
-          <Alert className="mb-6 bg-amber-50 border-amber-200">
-            <Info className="h-4 w-4 text-amber-500" />
-            <AlertTitle className="text-amber-700">تنبيه الوصول</AlertTitle>
-            <AlertDescription className="text-amber-600">
-              {reasons.includes("location") && <p>يبدو أنك تتصفح من خارج الكويت. يرجى تسجيل الدخول للمتابعة.</p>}
-              {reasons.includes("source") && <p>يبدو أنك لم تصل من إعلانات جوجل. يرجى تسجيل الدخول للمتابعة.</p>}
-              {reasons.includes("device") && <p>يبدو أنك تتصفح من جهاز غير محمول. يرجى تسجيل الدخول للمتابعة.</p>}
-            </AlertDescription>
-          </Alert>
-        )}
-
         <Card>
           <CardHeader>
             <CardTitle className="text-2xl">تسجيل الدخول</CardTitle>
