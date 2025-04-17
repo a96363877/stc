@@ -12,7 +12,7 @@ export function ProductCard({ image, title, price, currency, installment }: Prod
   return (
     <div className="bg-white rounded-xl p-4 shadow-sm">
       <div className="flex justify-center mb-4">
-        <Image src={image || "/placeholder.svg"} alt={title} width={120} height={120} className="h-32 object-contain" />
+        <img src={image || "/placeholder.svg"} alt={title} width={120} height={120} className="h-32 object-contain" />
       </div>
       <div className="text-right">
         <h3 className="font-medium text-sm mb-2">{title}</h3>

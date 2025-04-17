@@ -31,7 +31,7 @@ export function CategoryCard({ icon, label, image, bgColor = "bg-gray-100" }: Ca
     <div className="flex flex-col items-center">
       <div className={`${bgColor} rounded-xl p-3 w-full aspect-square flex items-center justify-center shadow-sm`}>
         {image ? (
-          <Image
+          <img
             src={image || "/placeholder.svg"}
             alt={label}
             width={40}

@@ -37,12 +37,12 @@ export default function Home() {
 
       {/* Hero Banner */}
       <div className="relative mx-4 my-6 rounded-3xl overflow-hidden shadow-md">
-        <Image
+        <img
           src="/hero-banner.jpg"
           alt="Hero Banner"
           width={700}
           height={400}
-          className="w-full h-[280px] object-cover rounded-3xl"
+          className="w-full h-[330px] object-cover rounded-3xl"
         />
         <div className="absolute inset-0 p-6 flex flex-col justify-between">
           <div className="bg-white/90 p-2 rounded-lg w-32 text-center">
@@ -51,7 +51,7 @@ export default function Home() {
           </div>
 
           <div className="space-y-2">
-            <h1 className="text-purple-900 font-bold text-3xl leading-tight">
+            <h1 className="text-white font-bold text-3xl leading-tight">
               تواصل بدون انقطاع
               <br />
               مع باقات الدفع الآجل
@@ -120,8 +120,8 @@ export default function Home() {
 
         <div className="grid grid-cols-2 gap-4">
           <ProductCard
-            image="/samsung-s23.png"
-            title="Samsung S23 Ultra"
+            image="/s25-Ultra-silver-blue-700x700.webp"
+            title="Samsung S25 Ultra"
             price="999.00"
             currency="د.ك"
             installment="41.63"
@@ -176,8 +176,8 @@ export default function Home() {
 
         <div className="grid grid-cols-3 gap-2">
           <CategoryCard image="/router.png" label="راوتر" bgColor="bg-purple-100" />
-          <CategoryCard image="/earbuds.png" label="سماعات" bgColor="bg-purple-100" />
-          <CategoryCard image="/watch.png" label="ساعات" bgColor="bg-purple-100" />
+          <CategoryCard image="/music.png" label="سماعات" bgColor="bg-purple-100" />
+          <CategoryCard image="/wristwatch.png" label="ساعات" bgColor="bg-purple-100" />
         </div>
       </div>
 
