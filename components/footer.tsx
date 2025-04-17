@@ -50,7 +50,7 @@ export function Footer() {
       </div>
 
       <div className="flex justify-center">
-        <Image src="/next.svg" alt="STC Logo" width={60} height={30} className="h-8 w-auto" />
+        <Image src="/vercel.svg" alt="STC Logo" width={60} height={30} className="h-8 w-auto" />
       </div>
     </footer>
   )
