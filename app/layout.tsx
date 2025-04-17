@@ -1,7 +1,6 @@
 import type React from "react"
 import "./globals.css"
 import type { Metadata } from "next"
-import { ThemeProvider } from "@/components/theme-provider"
 
 // Load local Arabic font
 
@@ -18,9 +17,7 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <body className={`min-h-screen bg-background antialiased font-sans`}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           {children}
-        </ThemeProvider>
       </body>
     </html>
   )
