@@ -37,7 +37,7 @@ export default function Home() {
           alt="Hero Banner"
           width={700}
           height={400}
-          className="w-full h-[280px] object-cover rounded-3xl"
+          className="w-full h-[330px] object-cover rounded-3xl"
         />
         <div className="absolute inset-0 p-6 flex flex-col justify-between">
           <div className="bg-white/90 p-2 rounded-lg w-32 text-center">
@@ -47,9 +47,6 @@ export default function Home() {
 
           <div className="space-y-2">
             <h1 className="text-purple-900 font-bold text-3xl leading-tight">
-              تواصل بدون انقطاع
-              <br />
-              مع باقات الدفع الآجل
             </h1>
             <div className="flex justify-end mt-4">
               <Button className="bg-red-500 hover:bg-red-600 text-white rounded-full px-8 py-2 font-medium">
