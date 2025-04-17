@@ -10,7 +10,7 @@ export function ServiceCard({ icon, title, titleAlignment = "default" }: Service
   const getIcon = (): JSX.Element => {
     switch (icon) {
       case "store":
-        return <Store className="w-8 h-8 text-white" />
+        return <Store className="w-8 h-8 text-white text-center" />
       case "shield":
         return <Shield className="w-8 h-8 text-white" />
       case "arrow-right":
@@ -27,7 +27,7 @@ export function ServiceCard({ icon, title, titleAlignment = "default" }: Service
       <div className="bg-emerald-500 rounded-full p-4 w-16 h-16 flex items-center justify-center shadow-md">
         {getIcon()}
       </div>
-      <span className={`mt-2 text-sm ${titleAlignment === "center" ? "text-center" : "text-right"} leading-tight`}>
+      <span className={`mt-2 text-sm ${titleAlignment === "center" ? "text-center" : "text-center"} leading-tight`}>
         {title}
       </span>
     </div>
