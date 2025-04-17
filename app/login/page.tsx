@@ -2,6 +2,7 @@ import Image from "next/image"
 import { Search, ShoppingCart, User, Store, Shield, ArrowRight, PlusCircle, CreditCard } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { Footer } from "@/components/footer"
 
 export default function Home() {
   return (
@@ -21,7 +22,7 @@ export default function Home() {
         </div>
        
         <div className="flex items-center">
-          <img src="/next.svg" alt="STC Logo" width={80} height={40} className="h-10 w-auto" />
+          <Image src="/next.svg" alt="STC Logo" width={80} height={40} className="h-10 w-auto" />
         </div>
         <button className="p-2">
           <div className="flex flex-col space-y-1">
@@ -42,7 +43,7 @@ export default function Home() {
           </div>
 
           <div className="space-y-2">
-            <h1 className="text-purple-900 font-bold text-3xl text-right">
+            <h1 className="text-white font-bold text-3xl text-right">
               تواصل بدون انقطاع
               <br />
               مع باقات الدفع الآجل
@@ -133,6 +134,7 @@ export default function Home() {
           </svg>
         </div>
       </div>
+      <Footer/>
     </div>
   )
 }
