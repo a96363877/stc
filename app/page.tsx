@@ -14,7 +14,7 @@ export default function Home() {
         </div>
 
         <div className="flex items-center">
-          <Image src="/stc-logo.png" alt="STC Logo" width={80} height={40} className="h-10 w-auto" />
+          <Image src="/next.svg" alt="STC Logo" width={80} height={40} className="h-10 w-auto" />
         </div>
 
         <div className="flex items-center space-x-reverse space-x-6">
@@ -32,8 +32,8 @@ export default function Home() {
 
       {/* Hero Banner */}
       <div className="relative mx-4 my-6 rounded-3xl overflow-hidden shadow-md">
-        <Image
-          src="/hero-banner.jpg"
+        <img
+          src="/banner.webp"
           alt="Hero Banner"
           width={700}
           height={400}
