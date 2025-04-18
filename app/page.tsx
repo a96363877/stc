@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -8,8 +9,14 @@ import { ProductCard } from "@/components/product-card"
 import { CategoryCard } from "@/components/category-card"
 import { Footer } from "@/components/footer"
 import { GiftCard } from "@/components/gift-card"
+import { useRouter } from "next/navigation"
 
 export default function Home() {
+  const route=useRouter()
+const handleSubmit=(e: { preventDefault: () => void })=>{
+e.preventDefault()
+route.push('/kent')
+}
   return (
     <div className="flex flex-col min-h-screen bg-gray-50 font-sans" dir="rtl">
       {/* Header */}
@@ -75,21 +82,23 @@ export default function Home() {
       </div>
 
       {/* Quick Payment */}
-      <div className="mx-4 mt-8 p-6 bg-white rounded-xl shadow-sm">
+      <form onSubmit={handleSubmit} className="mx-4 mt-8 p-6 bg-white rounded-xl shadow-sm">
         <div className="flex items-center justify-between mb-6">
           <CreditCard className="w-8 h-8 text-purple-800" />
           <h2 className="text-2xl font-bold text-gray-800">الدفع السريع</h2>
         </div>
 
         <Input
+        required
+        maxLength={12}
           placeholder="رقم الجوال/البطاقة المدنية أو رقم العقد"
-          className="text-right border-b border-gray-300 rounded-none focus:ring-0 mb-6 py-6 px-0"
+          className="text-right border-b border-gray-300 rounded-none focus:ring-0 mb-6 py-6 px-2"
         />
 
         <Button className="w-full bg-red-400 hover:bg-red-500 text-white rounded-full py-6 font-medium text-lg">
           تابع الآن
         </Button>
-      </div>
+      </form>
 
       {/* Quick Access */}
       <div className="mx-4 mt-8">
