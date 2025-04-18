@@ -175,7 +175,7 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-3 gap-2">
-          <CategoryCard image="wifi" label="راوتر" bgColor="bg-purple-100" />
+          <CategoryCard image="/wifi.png" label="راوتر" bgColor="bg-purple-100" />
           <CategoryCard image="/music.png" label="سماعات" bgColor="bg-purple-100" />
           <CategoryCard image="/wristwatch.png" label="ساعات" bgColor="bg-purple-100" />
         </div>
