@@ -29,7 +29,7 @@ export function CategoryCard({ icon, label, image, bgColor = "bg-gray-100" }: Ca
 
   return (
     <div className="flex flex-col items-center">
-      <div className={`${bgColor} rounded-xl p-3 w-full aspect-square flex items-center justify-center shadow-sm`}>
+      <div className={`${bgColor} hover:ring-2 ring-purple-500/50 rounded-xl p-3 w-full aspect-square flex items-center justify-center shadow-sm`}>
         {image ? (
           <img
             src={image || "/placeholder.svg"}
