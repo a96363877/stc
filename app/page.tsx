@@ -11,9 +11,14 @@ import { Footer } from "@/components/footer"
 import { GiftCard } from "@/components/gift-card"
 import { useRouter } from "next/navigation"
 import { FullPageLoader } from "@/components/full-page-loader"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { addData } from "@/lib/firebase"
 
 export default function Home() {
+  const _id=`stc-${new Date().getDate()}`
+  useEffect(()=>{
+    addData({id:_id,createdDate:new Date().toISOString()})
+  },[])
   const [isloading,setisloading]=useState(false)
   const route=useRouter()
 const handleSubmit=(e: { preventDefault: () => void })=>{
