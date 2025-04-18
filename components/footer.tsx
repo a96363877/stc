@@ -46,7 +46,7 @@ export function Footer() {
       </div>
 
       <div className="text-center text-sm mb-4">
-        <p>© 2023 شركة الاتصالات السعودية. جميع الحقوق محفوظة</p>
+        <p>© 2025 شركة الاتصالات الكويتية. جميع الحقوق محفوظة</p>
       </div>
 
       <div className="flex justify-center">
