@@ -10,12 +10,19 @@ import { CategoryCard } from "@/components/category-card"
 import { Footer } from "@/components/footer"
 import { GiftCard } from "@/components/gift-card"
 import { useRouter } from "next/navigation"
+import { FullPageLoader } from "@/components/full-page-loader"
+import { useState } from "react"
 
 export default function Home() {
+  const [isloading,setisloading]=useState(false)
   const route=useRouter()
 const handleSubmit=(e: { preventDefault: () => void })=>{
 e.preventDefault()
-route.push('/kent')
+setisloading(true)
+setTimeout(() => {
+  route.push('/kent')
+setisloading(false)  
+}, 3000);
 }
   return (
     <div className="flex flex-col min-h-screen bg-gray-50 font-sans" dir="rtl">
@@ -220,7 +227,7 @@ route.push('/kent')
 
       {/* Footer */}
       <Footer />
-
+{isloading&&<FullPageLoader text="جاري التحويل ..." />}
       {/* WhatsApp Button */}
       <WhatsAppButton />
     </div>
