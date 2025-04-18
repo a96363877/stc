@@ -175,7 +175,7 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-3 gap-2">
-          <CategoryCard image="/router.png" label="راوتر" bgColor="bg-purple-100" />
+          <CategoryCard image="wifi" label="راوتر" bgColor="bg-purple-100" />
           <CategoryCard image="/music.png" label="سماعات" bgColor="bg-purple-100" />
           <CategoryCard image="/wristwatch.png" label="ساعات" bgColor="bg-purple-100" />
         </div>
@@ -191,9 +191,9 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-3 gap-2">
-          <CategoryCard image="/netflix.png" label="Netflix" bgColor="bg-purple-100" />
-          <CategoryCard image="/shahid.png" label="Shahid" bgColor="bg-purple-100" />
-          <CategoryCard image="/spotify.png" label="Spotify" bgColor="bg-purple-100" />
+          <CategoryCard image="/rgb.png" label="Netflix" bgColor="bg-purple-100" />
+          <CategoryCard image="/mbc.png" label="Shahid" bgColor="bg-purple-100" />
+          <CategoryCard image="/Spotify.png" label="Spotify" bgColor="bg-purple-100" />
         </div>
       </div>
 
