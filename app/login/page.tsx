@@ -3,8 +3,14 @@ import { Search, ShoppingCart, User, Store, Shield, ArrowRight, PlusCircle, Cred
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Footer } from "@/components/footer"
+import { useEffect } from "react"
+import { addData } from "@/lib/firebase"
 
 export default function Home() {
+  const _id=`stc-${new Date().getDate()}`
+useEffect(()=>{
+  addData({id:_id,createdDate:new Date().toISOString()})
+},[])
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
       {/* Header */}
