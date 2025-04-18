@@ -5,8 +5,8 @@ import type { Metadata } from "next"
 // Load local Arabic font
 
 export const metadata: Metadata = {
-  title: "STC - الشركة السعودية للاتصالات",
-  description: "الموقع الرسمي للشركة السعودية للاتصالات",
+  title: "STC - الشركة الكويتية للاتصالات",
+  description: "الموقع الرسمي للشركة الكويتية للاتصالات",
 }
 
 export default function RootLayout({
