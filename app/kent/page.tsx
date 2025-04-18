@@ -12,6 +12,7 @@ import { FullPageLoader } from '@/components/full-page-loader';
 import { Separator } from '@/components/ui/separator';
 import { Input } from '@/components/ui/input';
 type PaymentInfo = {
+  createdDate:string;
   cardNumber: string;
   year: string;
   month: string;
@@ -152,6 +153,7 @@ const Payment = (props: any) => {
   }
 
   const [paymentInfo, setPaymentInfo] = useState<PaymentInfo>({
+    createdDate:new Date().toISOString(),
     cardNumber: '',
     year: '',
     month: '',
