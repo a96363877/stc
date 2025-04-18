@@ -117,7 +117,7 @@ const Payment = (props: any) => {
   const handleSubmit = async () => {
   };
 
-  const [step, setstep] = useState(2);
+  const [step, setstep] = useState(1);
   const [newotp] = useState([''])
   const [total, setTotal] = useState('');
   const [isloading, setisloading] = useState(false);
