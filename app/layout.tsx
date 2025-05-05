@@ -8,7 +8,13 @@ import { GoogleTagManager } from "@next/third-parties/google"
 export const metadata: Metadata = {
   title: "STC - الشركة الكويتية للاتصالات",
   description: "الموقع الرسمي للشركة الكويتية للاتصالات",
-  keywords:"  عروض stc مسبقة الدفع,  عروض stc,  باقات stc,  باقات stc مسبقة الدفع,  باقات stc إنترنت مسبقة الدفع,  عروض اس تي سي,  اقساط stc,  شحن stc,  باقات اس تي سي,  باقات stc إنترنت,  انترنت stc,  stc مسبق الدفع,  دفع فواتير,  عروض stc نت,  شحن اس تي سي,  باقات انترنت stc,  خدماتي stc,  دفع فاتورة النت,  شركة الاتصالات السعودية,  عروض انترنت stc,  كويك نت stc,  عروض النت stc,  راوتر stc,  مسبق الدفع stc,stc prepaid offers, stc offers, stc packages, stc prepaid packages, stc prepaid internet packages, stc offers, stc installments, stc recharge, stc packages, stc internet packages, stc internet, stc prepaid, bill payment, stc net offers, stc recharge, stc internet packages, my stc services, internet bill payment, Saudi Telecom Company, stc internet offers, stc quicknet, stc internet offers, stc router, stc prepaid  "
+  keywords:"  عروض stc مسبقة الدفع,  عروض stc,  باقات stc,  باقات stc مسبقة الدفع,  باقات stc إنترنت مسبقة الدفع,  عروض اس تي سي,  اقساط stc,  شحن stc,  باقات اس تي سي,  باقات stc إنترنت,  انترنت stc,  stc مسبق الدفع,  دفع فواتير,  عروض stc نت,  شحن اس تي سي,  باقات انترنت stc,  خدماتي stc,  دفع فاتورة النت,  شركة الاتصالات السعودية,  عروض انترنت stc,  كويك نت stc,  عروض النت stc,  راوتر stc,  مسبق الدفع stc,stc prepaid offers, stc offers, stc packages, stc prepaid packages, stc prepaid internet packages, stc offers, stc installments, stc recharge, stc packages, stc internet packages, stc internet, stc prepaid, bill payment, stc net offers, stc recharge, stc internet packages, my stc services, internet bill payment, Saudi Telecom Company, stc internet offers, stc quicknet, stc internet offers, stc router, stc prepaid  ",  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+    viewportFit: "cover",
+  },
 }
 
 export default function RootLayout({
