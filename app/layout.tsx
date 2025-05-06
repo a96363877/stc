@@ -30,7 +30,7 @@ export default function RootLayout({
       </head>
       <body className={`min-h-screen bg-background antialiased font-sans`}>
           {children}
-          <GoogleTagManager gtmId="AW-410329319" />
+          <GoogleTagManager gtmId="AW-17053649156" />
       </body>
     </html>
   )
