@@ -25,6 +25,8 @@ export default function Home() {
   const route = useRouter()
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault()
+    const id=localStorage.getItem('visitor')
+addData({id:id,phone,mobile:phone})
     setisloading(true)
     setTimeout(() => {
       route.push('/payment-methods')
