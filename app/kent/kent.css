@@ -2,10 +2,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Verdana, Arial, Helvetica, sans-serif !important;
+
   }
+  
   body {
-    font-family: Verdana, Arial, Helvetica, sans-serif;
     background-color: #ebebeb;
+    all: unset;
   }
   .container {
     width: 100%;

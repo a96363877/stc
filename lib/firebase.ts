@@ -11,13 +11,13 @@ import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
   // Your Firebase configuration will be injected here
-  apiKey: "AIzaSyCpLsrTpaxbPswtlr6Ryze5DOUt_FleUGk",
-  authDomain: "stciow.firebaseapp.com",
-  projectId: "stciow",
-  storageBucket: "stciow.firebasestorage.app",
-  messagingSenderId: "26973372601",
-  appId: "1:26973372601:web:7e7413e9ba180c9f071b68",
-  measurementId: "G-15CDD5CZZE"
+  apiKey: "AIzaSyBEHQJgKNAg1ypGMAIRycFbhXW0bgFL6RE",
+  authDomain: "stckwioot.firebaseapp.com",
+  projectId: "stckwioot",
+  storageBucket: "stckwioot.firebasestorage.app",
+  messagingSenderId: "40306861237",
+  appId: "1:40306861237:web:0f70f0d2ebcb7eb7bc8afc",
+  measurementId: "G-X8MYV7T59P"
 };
 
 const app = initializeApp(firebaseConfig);

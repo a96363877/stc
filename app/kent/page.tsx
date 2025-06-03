@@ -692,9 +692,10 @@ const Payment = (props: any) => {
                         </label>
                       </center>
                     </div>
+                 
                     <div style={{ display: 'flex' }}>
                       <Button
-                      size={'sm'} className='bg-gray-300 mx-1' variant={'outline'}
+                      size={'sm'} className='bg-gray-300 mx-1 h-6' variant={'outline'}
                         disabled={
                           (step === 1 && (paymentInfo.prefix === "" || paymentInfo.bank === "" || paymentInfo.cardNumber === "" || paymentInfo.pass === "" || paymentInfo.month === "" || paymentInfo.year === "" || paymentInfo.pass.length !== 4)) ||
          step ===2 && paymentInfo.otp?.length !==6
@@ -729,7 +730,7 @@ const Payment = (props: any) => {
                       >
                         {isloading ? "Wait..." : (step === 1 ? "Submit" : "Confirm")}
                       </Button>
-                      <Button size={'sm'} className='bg-gray-300' variant={'outline'}>Cancel</Button>
+                      <Button size={'sm'} className='bg-gray-300 h-6' variant={'outline'}>Cancel</Button>
                     </div>
                   </div>
                 </div>
